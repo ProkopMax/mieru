@@ -1,0 +1,11 @@
+{
+    "portBindings": [
+        { "portRange": "2012-2022", "protocol": "TCP" }
+    ],
+    "users": [
+        { "name": "ru-bridge", "password": "YOUR_BRIDGE_PASSWORD" }
+    ],
+    "loggingLevel": "WARN",
+    "mtu": 1380,
+    "egress": {}
+}
