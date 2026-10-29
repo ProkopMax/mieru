@@ -1,0 +1,29 @@
+---
+services:
+  mita-exit:
+    build:
+      context: .
+      args:
+        MIERU_VERSION: "3.39.0"
+    image: mieru-bundle:3.39.0
+    container_name: mita-exit
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      MIERU_MODE: mita
+      MIERU_CONFIG: /srv/server.json
+    volumes:
+      - ./server.json:/srv/server.json:ro
+      - mita-exit-state:/etc/mita
+      - mita-exit-runtime:/var/run/mita
+      - mita-exit-data:/var/lib/mita
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  mita-exit-state:
+  mita-exit-runtime:
+  mita-exit-data:
